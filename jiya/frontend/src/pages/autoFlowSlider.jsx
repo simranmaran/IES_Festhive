@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
+"use client"
+
+import { useEffect, useState } from "react"
 
 export default function AutoFlowSlider() {
-  const events = ['UTSAV', 'GARBA', 'DJ NIGHT', 'ATVC', 'INFORIA', 'FEST-O-COM'];
-  const flowingItems = [...events, ...events, ...events]; // Triple for smoother loop
-  const [isHovered, setIsHovered] = useState(false);
-  const [animationSpeed, setAnimationSpeed] = useState('30s');
+  const events = ["UTSAV", "GARBA", "DJ NIGHT", "ATVC", "INFORIA", "FEST-O-COM"]
+  const flowingItems = [...events, ...events, ...events] // Triple for smoother loop
+  const [isHovered, setIsHovered] = useState(false)
+  const [animationSpeed, setAnimationSpeed] = useState("30s")
 
   // Change animation speed on hover
   useEffect(() => {
-    setAnimationSpeed(isHovered ? '60s' : '30s');
-  }, [isHovered]);
+    setAnimationSpeed(isHovered ? "60s" : "30s")
+  }, [isHovered])
 
   return (
-    <div 
-      className="overflow-hidden w-full bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 py-8 relative"
+    <div
+      className="overflow-hidden w-full bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 py-4 md:py-8 relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(10)].map((_, i) => (
-          <div 
+          <div
             key={i}
             className="absolute rounded-full bg-white/5"
             style={{
@@ -29,28 +31,28 @@ export default function AutoFlowSlider() {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDuration: `${Math.random() * 10 + 10}s`,
-              animation: 'float infinite ease-in-out'
+              animation: "float infinite ease-in-out",
             }}
           />
         ))}
       </div>
-      
-      <h2 className="text-center text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500">
+
+      <h2 className="text-center text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500">
         Upcoming Events
       </h2>
-      
-      <div 
+
+      <div
         className="flex whitespace-nowrap"
         style={{
           animation: `scroll ${animationSpeed} linear infinite`,
-          transition: 'animation-duration 0.5s ease'
+          transition: "animation-duration 0.5s ease",
         }}
       >
         {flowingItems.map((event, index) => (
           <div
             key={index}
-            className="min-w-[220px] h-[120px] mx-4 bg-gradient-to-br from-yellow-600/80 to-yellow-800/90 rounded-xl shadow-lg 
-                      flex items-center justify-center text-xl font-bold text-white transform transition-all duration-300
+            className="min-w-[180px] md:min-w-[220px] h-[100px] md:h-[120px] mx-2 md:mx-4 bg-gradient-to-br from-yellow-600/80 to-yellow-800/90 rounded-xl shadow-lg 
+                      flex items-center justify-center text-lg md:text-xl font-bold text-white transform transition-all duration-300
                       hover:scale-105 hover:shadow-yellow-500/30 hover:from-yellow-500 hover:to-yellow-700 cursor-pointer
                       border border-yellow-500/30"
           >
@@ -62,7 +64,7 @@ export default function AutoFlowSlider() {
           </div>
         ))}
       </div>
-      
+
       {/* Add keyframes for the animation */}
       <style jsx>{`
         @keyframes scroll {
@@ -83,7 +85,18 @@ export default function AutoFlowSlider() {
             opacity: 0.5;
           }
         }
+        
+        @media (max-width: 768px) {
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-${events.length * 184}px);
+            }
+          }
+        }
       `}</style>
     </div>
-  );
+  )
 }
