@@ -1,11 +1,11 @@
 import uddan from '../assets/assets/uddan.jpg';
 import aggaz from '../assets/assets/aggaz.jpg';
 import concert from '../assets/assets/concert.jpg';
-import INFORI from '../assets/assets/INFORIA.jpg';
-import ATVC from '../assets/assets/ATVC.jpg';
+import INFORI from '../assets/assets/inforia.jpg';
+import ATVC from '../assets/assets/atvc.jpg';
 import DJ_NIGHT from '../assets/assets/djnight.jpg';
-import UTSAV from '../assets/assets/UTSAV.jpg';
-import GARBA from '../assets/assets/GARBA.jpg';
+import UTSAV from '../assets/assets/utsav.jpg';
+import GARBA from '../assets/assets/garba.jpg';
 
 export const features = [
   {
