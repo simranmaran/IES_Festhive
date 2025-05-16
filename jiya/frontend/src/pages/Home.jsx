@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { ChevronRight, MapPin, ArrowRight } from "lucide-react"
 import img from "../assets/college_image.jpg"
+import Contact from "../pages/Contact"
 import uddan from "../assets/uddan.jpg"
 import aggaz from "../assets/aggaz.jpg"
 import concert from "../assets/concert.jpg"
@@ -163,23 +164,23 @@ export default function Dashboard() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
-                <Link to={`/event/${feature.id}`} key={index} className="block">
-                  <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow">
-                    <img
-                      src={feature.img || "/placeholder.svg"}
-                      alt={feature.title}
-                      className="w-full h-48 object-cover rounded-md"
-                    />
-                    <h3 className="text-xl font-semibold mt-4 mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                <div key={index} className="bg-white rounded-lg shadow-md p-4">
+                  <img
+                    src={feature.img || "/placeholder.svg"}
+                    alt={feature.title}
+                    className="w-full h-48 object-cover rounded-md"
+                  />
+                  <h3 className="text-xl font-semibold mt-4 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
 
-                    <div className="flex justify-center mt-6">
+                  <div className="flex justify-center mt-6">
+                    <Link to={`/event/${feature.id}`}>
                       <button className="px-6 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition shadow-md">
                         View More
                       </button>
-                    </div>
+                    </Link>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
@@ -209,6 +210,66 @@ export default function Dashboard() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section id="features" className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-500 to-yellow-500 text-transparent bg-clip-text">
+                Powerful Features Built for Event Success
+              </h2>
+              <p className="text-xl max-w-3xl mx-auto bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
+                Discover how our system simplifies event management from start to finish.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-yellow-600">
+              {[
+                {
+                  icon: "📝",
+                  title: <Link to="/registration_page">Go to Registration Page</Link>,
+                  desc: "Allow attendees to register easily with custom forms and instant confirmation.",
+                },
+                {
+                  icon: "📊",
+                  title: <Link to="/Live_Analytics">Live Analytics</Link>,
+                  desc: "Track registrations, engagement, and attendance in real-time.",
+                },
+                {
+                  icon: "📧",
+                  title: <Link to="/Notifications">Automated Notifications</Link>,
+                  desc: "Send timely reminders and updates via email and SMS.",
+                },
+                {
+                  icon: "🗓️",
+                  title: <Link to="/schedule_managment">Schedule Management</Link>,
+                  desc: "Create and share event schedules with built-in reminders.",
+                },
+                // {
+                //   icon: "🏛️",
+                //   title: "Venue & Resource Booking",
+                //   desc: "Reserve locations and manage event logistics efficiently.",
+                // },
+                {
+                  icon: "💬",
+                  title: <Link to="/feedback_page">Feedback Collection</Link>,
+                  desc: "Gather post-event feedback to continuously improve experiences.",
+                },
+              ].map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-black-500 p-6 rounded-xl shadow-md hover:shadow-xl transition border-2 border-yellow-300"
+                >
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h4 className="font-bold text-lg mb-2 bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
+                    {feature.title}
+                  </h4>
+                  <p className="text-yellow-600 ">{feature.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -256,6 +317,11 @@ export default function Dashboard() {
               </a>
             </div>
           </div>
+        </section>
+
+        {/* CTA Section */}
+        <section id="pricing" className="py-20 bg-gradient-to-r from-black-600 to-yellow-900 text-white">
+          <Contact />
         </section>
 
         {/* Footer */}

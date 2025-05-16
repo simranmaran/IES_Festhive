@@ -1,28 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { FaUser, FaEdit, FaShoppingBag } from "react-icons/fa";
 
+import React, { useState, useEffect } from "react";
+import { FaUser, FaEdit, FaShoppingBag, FaHome, FaSignInAlt } from "react-icons/fa";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  
+  // Simulate navigate from react-router-dom
+  const navigate = (path) => {
+    console.log(`Navigating to: ${path}`);
+  };
 
   useEffect(() => {
+    // Simulate fetching user data
     const fetchUserProfile = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `http://localhost:5000/api/users/profile`,
-          {
-            withCredentials: true,
-          }
-        );
-        console.log(response.data);
-        setUser(response.data);
-        setLoading(false);
+        // Mock data for display purposes
+        setTimeout(() => {
+          setUser({
+            fullName: "John Doe",
+            email: "john.doe@example.com",
+            gender: "male",
+            createdAt: "2023-05-15T12:00:00Z",
+            profilePic: null,
+            orders: [
+              {
+                _id: "ORD12345",
+                createdAt: "2024-04-10T15:30:00Z",
+                total: 125.99,
+                status: "Delivered"
+              },
+              {
+                _id: "ORD12346",
+                createdAt: "2024-05-01T09:15:00Z",
+                total: 89.50,
+                status: "Processing"
+              }
+            ]
+          });
+          setLoading(false);
+        }, 1000);
       } catch (err) {
         setError("Failed to load profile. Please try again.");
         setLoading(false);
@@ -39,20 +58,20 @@ const UserProfile = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#A0522D]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 md:h-16 md:w-16 border-t-2 border-b-2 border-[#A0522D]"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex flex-col justify-center items-center h-screen">
-        <div className="text-red-500 text-xl mb-4">{error}</div>
+      <div className="flex flex-col justify-center items-center h-screen p-4">
+        <div className="text-red-500 text-lg md:text-xl mb-4 text-center">{error}</div>
         <button
           onClick={() => navigate("/")}
-          className="px-4 py-2 bg-[#A0522D] text-white rounded hover:bg-[#8B4513]"
+          className="flex items-center px-4 py-2 bg-[#A0522D] text-white rounded hover:bg-[#8B4513] transition"
         >
-          Return Home
+          <FaHome className="mr-2" /> Return Home
         </button>
       </div>
     );
@@ -60,101 +79,98 @@ const UserProfile = () => {
 
   if (!user) {
     return (
-      <div className="flex flex-col justify-center items-center h-screen">
-        <div className="text-xl mb-4">Please log in to view your profile</div>
+      <div className="flex flex-col justify-center items-center h-screen p-4">
+        <div className="text-lg md:text-xl mb-4 text-center">Please log in to view your profile</div>
         <button
           onClick={() => navigate("/login")}
-          className="px-4 py-2 bg-[#A0522D] text-white rounded hover:bg-[#8B4513]"
+          className="flex items-center px-4 py-2 bg-[#A0522D] text-white rounded hover:bg-[#8B4513] transition"
         >
-          Login
+          <FaSignInAlt className="mr-2" /> Login
         </button>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto py-8 px-4 md:px-0">
+    <div className="container mx-auto py-4 md:py-8 px-4">
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="bg-gradient-to-r from-[#5A3E36] to-[#A0522D] text-white p-6">
-          <h1 className="text-2xl font-bold">My Profile</h1>
+        {/* Header */}
+        <div className="bg-gradient-to-r from-[#5A3E36] to-[#A0522D] text-white p-4 md:p-6">
+          <h1 className="text-xl md:text-2xl font-bold">My Profile</h1>
         </div>
 
         <div className="flex flex-col md:flex-row">
           {/* Profile Image Section */}
-          <div className="p-6 md:w-1/3 flex flex-col items-center border-b md:border-b-0 md:border-r border-gray-200">
-            <div className="relative w-32 h-32 overflow-hidden rounded-full mb-4 bg-gray-100 flex items-center justify-center">
+          <div className="p-4 md:p-6 md:w-1/3 flex flex-col items-center border-b md:border-b-0 md:border-r border-gray-200">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 overflow-hidden rounded-full mb-4 bg-gray-100 flex items-center justify-center">
               {user.profilePic ? (
                 <img
                   src={user.profilePic}
                   alt={user.fullName}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "/default-avatar.png";
-                  }}
                 />
               ) : (
-                <FaUser size={48} className="text-gray-400" />
+                <FaUser size={36} className="text-gray-400" />
               )}
             </div>
-            <h2 className="text-xl font-semibold text-center">
+            <h2 className="text-lg md:text-xl font-semibold text-center">
               {user.fullName}
             </h2>
-            <p className="text-gray-500 text-center mb-4">{user.email}</p>
+            <p className="text-gray-500 text-center text-sm md:text-base mb-4 break-words w-full">{user.email}</p>
             <button
               onClick={handleEditProfile}
-              className="flex items-center justify-center gap-2 px-4 py-2 bg-[#A0522D] text-white rounded-md hover:bg-[#8B4513] transition w-full"
+              className="flex items-center justify-center gap-2 px-3 py-2 bg-[#A0522D] text-white rounded-md hover:bg-[#8B4513] transition w-full text-sm md:text-base"
             >
               <FaEdit /> Edit Profile
             </button>
           </div>
 
           {/* User Details Section */}
-          <div className="p-6 md:w-2/3">
-            <h3 className="text-lg font-semibold mb-4 text-[#5A3E36]">
+          <div className="p-4 md:p-6 md:w-2/3">
+            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4 text-[#5A3E36]">
               Personal Information
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-5 md:mb-6">
               <div>
-                <p className="text-sm text-gray-500">Full Name</p>
-                <p className="font-medium">{user.fullName}</p>
+                <p className="text-xs md:text-sm text-gray-500">Full Name</p>
+                <p className="font-medium text-sm md:text-base">{user.fullName}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Email</p>
-                <p className="font-medium">{user.email}</p>
+                <p className="text-xs md:text-sm text-gray-500">Email</p>
+                <p className="font-medium text-sm md:text-base break-words">{user.email}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Gender</p>
-                <p className="font-medium capitalize">{user.gender}</p>
+                <p className="text-xs md:text-sm text-gray-500">Gender</p>
+                <p className="font-medium text-sm md:text-base capitalize">{user.gender}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Member Since</p>
-                <p className="font-medium">
+                <p className="text-xs md:text-sm text-gray-500">Member Since</p>
+                <p className="font-medium text-sm md:text-base">
                   {new Date(user.createdAt).toLocaleDateString()}
                 </p>
               </div>
             </div>
 
-            <h3 className="text-lg font-semibold mb-4 text-[#5A3E36] flex items-center">
+            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4 text-[#5A3E36] flex items-center">
               <FaShoppingBag className="mr-2" /> Order History
             </h3>
 
             {user.orders && user.orders.length > 0 ? (
-              <div className="border rounded-md overflow-hidden">
+              <div className="border rounded-md overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Order ID
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Date
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Total
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Status
                       </th>
                     </tr>
@@ -162,18 +178,18 @@ const UserProfile = () => {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {user.orders.map((order, index) => (
                       <tr key={index} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm">
                           {order._id || `#${index + 1}`}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm">
                           {order.createdAt
                             ? new Date(order.createdAt).toLocaleDateString()
                             : "N/A"}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm">
                           ${order.total?.toFixed(2) || "N/A"}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap">
                           <span
                             className={`px-2 py-1 rounded-full text-xs ${
                               order.status === "Delivered"
@@ -192,14 +208,13 @@ const UserProfile = () => {
                 </table>
               </div>
             ) : (
-              <div className="text-center py-4 border rounded-md bg-gray-50">
-                <p className="text-gray-500">No order history available</p>
+              <div className="text-center py-3 md:py-4 border rounded-md bg-gray-50">
+                <p className="text-gray-500 text-sm md:text-base">No order history available</p>
               </div>
             )}
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
