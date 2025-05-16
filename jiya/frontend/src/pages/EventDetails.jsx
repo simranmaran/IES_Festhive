@@ -30,13 +30,13 @@ export default function EventDetails() {
       id: 1, 
       title: "Annual Tech Symposium", 
       date: "June 12, 2025", 
-      image: "https://source.unsplash.com/random/600x400/?tech" 
+      image: "https://images.app.goo.gl/AEEqPYy5jNZp5VM89" 
     },
     { 
       id: 2, 
       title: "Summer Music Festival", 
       date: "July 3, 2025", 
-      image: "https://source.unsplash.com/random/600x400/?music" 
+      image: "https://images.app.goo.gl/S4xzouk5vrY9kPxN6" 
     },
     { 
       id: 3, 
