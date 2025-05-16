@@ -6,9 +6,9 @@ import ATVC from '../assets/assets/atvc.jpg';
 import DJ_NIGHT from '../assets/assets/djnight.jpg';
 import UTSAV from '../assets/assets/utsav.jpg';
 import GARBA from '../assets/assets/garba.jpg';
-
-export const features = [
+export const features = [            
   {
+    
     id: "1",
     img: uddan,
     title: "UDAAN 2k25",
