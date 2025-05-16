@@ -79,7 +79,7 @@ const Navbar = () => {
         </NavLink>
 
         <button
-          className="md:hidden text-yellow-700 hover:text-yellow-800"
+          className="md:hidden text-white hover:text-white "
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -93,7 +93,7 @@ const Navbar = () => {
           {[
             { path: "/", label: "Home" },
             { path: "/evnets", label: "Events" },
-            { path: "/aboutus", label: "About Us" },
+            { path: "/AboutUs", label: "AboutUs" },
             { path: "/contactus", label: "ContactUs" },
           ].map(({ path, label }) => (
             <li key={path}>

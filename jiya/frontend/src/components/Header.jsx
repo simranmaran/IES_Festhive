@@ -31,7 +31,7 @@ function Header() {
               <a href="/" className="text-yellow-700 hover:text-yellow-700 transition">Home</a>
               <a href="/event" className="text-yellow-700 hover:text-yellow-700 transition">Events</a>
               <a href="/contact" className="text-yellow-700 hover:text-yellow-700 transition">Contact</a>
-              <a href="" className="text-yellow-700 hover:text-yellow-700 transition">About Us</a>
+              <a href="/about" className="text-yellow-700 hover:text-yellow-700 transition">AboutUs</a>
             </nav>
 
             {/* Desktop Buttons */}
@@ -50,7 +50,7 @@ function Header() {
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 rounded-md focus:outline-none">
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 rounded-md focus:outline-none bg-yellow  text-white ">
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
@@ -64,7 +64,7 @@ function Header() {
               <a href="/" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">Home</a>
               <a href="/event" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">Events</a>
               <a href="/contact" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">Contact</a>
-              <a href="/about" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">About Us</a>
+              <a href="AboutUs" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">AboutUs</a>
             </div>
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="mt-3 px-2 space-y-1">

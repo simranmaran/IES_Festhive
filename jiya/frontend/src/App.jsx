@@ -10,6 +10,7 @@ import OTPVerificationPage from "./pages/Otpverification"
 import ResetPassword from "./pages/ResetPassword";
 import AdminDashboard from "./pages/Admindasboard"
 import AdminLogin from "./pages/Adminlogin"
+import AboutUs from './pages/AboutUs';
 
 import Navbar from "./components/Navbar";
 import { CartProvider } from "./context/cartcontext";
@@ -55,11 +56,12 @@ function App() {
       {/* <Header /> */}
 
       <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/event" element={<PublicEvents />} />
-      <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/event" element={<PublicEvents />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path = "/userDashboard" element = {<UserDashboard /> } />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/userDashboard" element={<UserDashboard />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/volunteer" element={<RegisterVolunteer />} />
@@ -69,13 +71,11 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/verify-otp" element={<OTPVerificationPage />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-         <Route path="/admin-dashboard" element={<Dashboard />} />
-         <Route path="/slide" element={<Slide />} />
-         
-         <Route path="/dashboard" element={<AdminDashboard />} />
-         
-         <Route path="/eventregistration" element={<EventRegistrationForm />} />
-         <Route path="/feedback_page" element={<FeedbackPage/>} />
+        <Route path="/admin-dashboard" element={<Dashboard />} />
+        <Route path="/slide" element={<Slide />} />
+        <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/eventregistration" element={<EventRegistrationForm />} />
+        <Route path="/feedback_page" element={<FeedbackPage/>} />
         <Route path="/registration_page" element={<EventRegistrationPage />} />
         <Route path="/schedule_managment" element={<SchedulePage/>} />
         <Route path="/Live_Analytics" element={<LiveAnalyticsPage />} />

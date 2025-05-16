@@ -178,6 +178,7 @@ export default function Dashboard() {
                       <button className="px-6 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition shadow-md">
                         View More
                       </button>
+                     
                     </Link>
                   </div>
                 </div>
