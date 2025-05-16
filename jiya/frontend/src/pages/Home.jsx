@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { ChevronRight, MapPin, ArrowRight } from "lucide-react"
+import { Link } from "react-router-dom"
 import img from "../assets/college_image.jpg"
 import Contact from "../pages/Contact"
 import uddan from "../assets/uddan.jpg"
@@ -14,7 +15,6 @@ import GARBA from "../assets/garba.jpg"
 import DJ_NIGHT from "../assets/djnight.jpg"
 import UTSAV from "../assets/utsav.jpg"
 import Slider from "../pages/Slide"
-import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "@/components/Footer"
 
@@ -44,7 +44,7 @@ export default function Dashboard() {
       img: aggaz,
       title: "AGAAZ",
       description:
-        "The vibrant beginning of a new chapter for our juniors. It’s a warm welcome filled with energy, excitement, and unforgettable memories.",
+        "The vibrant beginning of a new chapter for our juniors. It's a warm welcome filled with energy, excitement, and unforgettable memories.",
     },
     {
       id: "3",
@@ -58,14 +58,14 @@ export default function Dashboard() {
       img: INFORI,
       title: "INFORIA",
       description:
-        "Our college’s vibrant fest, celebrating enthusiasm, creativity, and student talent. It’s a grand event filled with fun, competitions, and a showcase of skills and innovation.",
+        "Our college's vibrant fest, celebrating enthusiasm, creativity, and student talent. It's a grand event filled with fun, competitions, and a showcase of skills and innovation.",
     },
     {
       id: "5",
       img: FEST_O_COM,
       title: "FEST-O-COM",
       description:
-        "Lively fresher’s celebration to welcome our newest batch with joy and excitement. It’s a night of music, fun, and bonding that marks the beginning of a beautiful college journey.",
+        "Lively fresher's celebration to welcome our newest batch with joy and excitement. It's a night of music, fun, and bonding that marks the beginning of a beautiful college journey.",
     },
     {
       id: "6",
@@ -131,12 +131,11 @@ export default function Dashboard() {
                     Celebrate, Connect, Create - Your College Fest, Simplified!
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button className="px-8 py-4 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition shadow-lg flex items-center justify-center">
-                      Explore Event <ChevronRight size={20} className="ml-2" />
-                    </button>
-                    <button className="px-8 py-4 bg-white text-yellow-600 border border-yellow-600 rounded-md hover:bg-yellow-50 transition shadow-md">
-                      Learn More
-                    </button>
+                    {/* Changed to Link component that navigates to AboutUs */}
+                    <Link to="/AboutUs" className="px-8 py-4 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition shadow-lg flex items-center justify-center">
+                      Explore More <ChevronRight size={20} className="ml-2" />
+                    </Link>
+                    
                   </div>
                 </div>
               </div>
@@ -159,7 +158,7 @@ export default function Dashboard() {
             <Slider />
 
             <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-yellow-600 bg-clip-text text-transparent text-center mt-10 mb-16">
-              EVENTS
+              PAST EVENTS
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -195,7 +194,7 @@ export default function Dashboard() {
               Technology, Bhopal, Our platform enables seamless organization, promotion, and participation in college
               festivals, workshops. seminars, and other events. Whether you're a student looking to discover exciting
               campus activities or an administrator tasked with organizing events, our platform simplifies the entire
-              process from event creation to registration and participation.
+              process from event creation to registration and participation.
             </p>
 
             {/* //ADD KIYA HAI   */}
@@ -249,11 +248,6 @@ export default function Dashboard() {
                   title: <Link to="/schedule_managment">Schedule Management</Link>,
                   desc: "Create and share event schedules with built-in reminders.",
                 },
-                // {
-                //   icon: "🏛️",
-                //   title: "Venue & Resource Booking",
-                //   desc: "Reserve locations and manage event logistics efficiently.",
-                // },
                 {
                   icon: "💬",
                   title: <Link to="/feedback_page">Feedback Collection</Link>,
