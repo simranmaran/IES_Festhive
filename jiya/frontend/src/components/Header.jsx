@@ -29,9 +29,9 @@ function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-10">
               <a href="/" className="text-yellow-700 hover:text-yellow-700 transition">Home</a>
-              <a href="/event" className="text-yellow-700 hover:text-yellow-700 transition">Events</a>
+              <a href="/Events" className="text-yellow-700 hover:text-yellow-700 transition">Events</a>
               <a href="/contact" className="text-yellow-700 hover:text-yellow-700 transition">Contact</a>
-              <a href="/about" className="text-yellow-700 hover:text-yellow-700 transition">AboutUs</a>
+              <a href="/AboutUs" className="text-yellow-700 hover:text-yellow-700 transition">AboutUs</a>
             </nav>
 
             {/* Desktop Buttons */}
@@ -62,7 +62,7 @@ function Header() {
           <div className="md:hidden bg-white shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a href="/" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">Home</a>
-              <a href="/event" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">Events</a>
+              <a href="/Events" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">Events</a>
               <a href="/contact" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">Contact</a>
               <a href="AboutUs" className="block px-3 py-2 text-base font-medium text-yellow-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-md">AboutUs</a>
             </div>

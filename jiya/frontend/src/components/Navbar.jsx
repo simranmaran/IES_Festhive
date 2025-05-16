@@ -92,7 +92,7 @@ const Navbar = () => {
         >
           {[
             { path: "/", label: "Home" },
-            { path: "/evnets", label: "Events" },
+            { path: "/Events", label: "Events" },
             { path: "/AboutUs", label: "AboutUs" },
             { path: "/contactus", label: "ContactUs" },
           ].map(({ path, label }) => (
