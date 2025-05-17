@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 // Import your images
-import UTSAV from "../assets/utsav.jpg";
-import GARBA from "../assets/garba.jpg";
+import UTSAV from "../assets/sih.jpg";
+import GARBA from "../assets/sadho.jpg";
 import DJ_NIGHT from "../assets/djnight.jpg";
-import ATVC from "../assets/atvc.jpg";
+import ATVC from "../assets/council2.jpg";
 
 const images = [UTSAV, GARBA, DJ_NIGHT, ATVC];
 
