@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronRight, MapPin, ArrowRight } from "lucide-react"
+import { ChevronRight, MapPin, ArrowRight } from 'lucide-react'
 import { Link } from "react-router-dom"
 import img from "../assets/college_image.jpg"
 import Contact from "../pages/Contact"
@@ -16,7 +16,7 @@ import DJ_NIGHT from "../assets/djnight.jpg"
 import UTSAV from "../assets/utsav.jpg"
 import Slider from "../pages/Slide"
 import Header from "../components/Header"
-import Footer from "@/components/Footer"
+import Footer from "../components/Footer"
 
 export default function Dashboard() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

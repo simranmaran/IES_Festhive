@@ -53,19 +53,19 @@ const Navbar = () => {
   };
 
   const handleSearch = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && searchQuery.trim()) {
       const categories = {
         "new arrival": "/new-arrival",
         "living area": "/living-area",
-        bedroom: "/bedroom",
+        "bedroom": "/bedroom",
         "garden area": "/garden-area",
-        bd: "/bedroom",
-        la: "/living-area",
-        ga: "/garden-area",
+        "bd": "/bedroom",
+        "la": "/living-area",
+        "ga": "/garden-area",
       };
 
       const searchTerm = searchQuery.toLowerCase();
-      navigate(categories[searchTerm] || "/not-found");
+      navigate(categories[searchTerm] || `/search?q=${encodeURIComponent(searchQuery)}`);
     }
   };
 
@@ -127,7 +127,7 @@ const Navbar = () => {
             >
               {profileImage ? (
                 <img
-                  src={profileImage}
+                  src={profileImage || "/placeholder.svg"}
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover border-2 border-yellow-700"
                 />
