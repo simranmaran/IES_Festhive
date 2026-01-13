@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="min-h-screen flex justify-center items-center bg-gray-100">
+  <form method="POST" enctype="multipart/form-data"
+        class="bg-white p-8 rounded shadow w-full max-w-lg">
+    {% csrf_token %}
+
+    <h2 class="text-3xl font-bold mb-6 text-center text-yellow-600">
+      Add New Event
+    </h2>
+
+    <input type="text" name="title"
+           placeholder="Event Title"
+           class="w-full p-2 border rounded mb-4" required>
+
+    <textarea name="description"
+              placeholder="Event Description"
+              class="w-full p-2 border rounded mb-4" rows="4" required></textarea>
+
+    <input type="date" name="date"
+           class="w-full p-2 border rounded mb-4" required>
+
+    <input type="text" name="time"
+           placeholder="Event Time (eg: 10 AM - 4 PM)"
+           class="w-full p-2 border rounded mb-4" required>
+
+    <input type="text" name="location"
+           placeholder="Event Location"
+           class="w-full p-2 border rounded mb-4" required>
+
+    <input type="file" name="image"
+           class="w-full p-2 border rounded mb-6" required>
+
+    <button class="w-full bg-yellow-600 hover:bg-yellow-700
+                   text-white py-2 rounded text-lg">
+      Add Event
+    </button>
+  </form>
+</div>
+
+{% endblock %}

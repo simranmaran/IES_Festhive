@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="min-h-screen flex justify-center items-center">
+  <form method="POST" class="bg-white p-8 rounded shadow w-96">
+    {% csrf_token %}
+    <h2 class="text-2xl font-bold mb-4">Register as Volunteer</h2>
+
+    <input name="name" placeholder="Name"
+           class="w-full p-2 border mb-3" required>
+
+    <input name="email" placeholder="Email"
+           class="w-full p-2 border mb-3" required>
+
+    <input name="phone" placeholder="Phone"
+           class="w-full p-2 border mb-3">
+
+    <button class="w-full bg-blue-600 text-white py-2 rounded">
+      Register
+    </button>
+  </form>
+</div>
+
+{% endblock %}

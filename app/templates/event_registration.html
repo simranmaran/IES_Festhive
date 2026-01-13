@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="max-w-4xl mx-auto p-6 bg-white shadow rounded mt-8">
+  <h2 class="text-3xl font-bold mb-6 text-center text-yellow-600">
+    Register for {{ event.title }}
+  </h2>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <h3 class="text-xl font-semibold mb-3">Personal Information</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input name="full_name" placeholder="Full Name" class="border p-2" required>
+      <input name="email" type="email" placeholder="Email" class="border p-2" required>
+      <input name="phone" placeholder="Phone" class="border p-2" required>
+
+      <select name="gender" class="border p-2" required>
+        <option value="">Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <input name="dob" type="date" class="border p-2" required>
+    </div>
+
+    <h3 class="text-xl font-semibold mt-6 mb-3">Education Details</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input name="enrollment" placeholder="Enrollment Number" class="border p-2" required>
+      <input name="college" placeholder="College Name" class="border p-2" required>
+      <input name="branch" placeholder="Branch" class="border p-2" required>
+      <input name="year" placeholder="Year" class="border p-2" required>
+    </div>
+
+    <h3 class="text-xl font-semibold mt-6 mb-3">More Details</h3>
+    <input name="hear_about" placeholder="How did you hear about us?"
+           class="border p-2 w-full mb-4">
+    <textarea name="experience" placeholder="Prior Experience"
+              class="border p-2 w-full"></textarea>
+
+    <button class="mt-6 w-full bg-yellow-600 text-white py-3 rounded text-lg">
+      Submit Registration
+    </button>
+  </form>
+</div>
+
+{% endblock %}

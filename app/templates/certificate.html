@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Georgia';
+      text-align: center;
+      padding: 50px;
+      border: 10px solid #d4af37;
+    }
+    h1 {
+      font-size: 48px;
+      color: #b8860b;
+    }
+    p {
+      font-size: 20px;
+    }
+    .name {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .event {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Certificate of Participation</h1>
+
+  <p>This is to certify that</p>
+
+  <div class="name">{{ registration.full_name }}</div>
+
+  <p>has successfully participated in</p>
+
+  <div class="event">{{ registration.event.title }}</div>
+
+  <p>organized by IES FestHive</p>
+
+  <div class="footer">
+    <p>Certificate ID: {{ certificate.certificate_id }}</p>
+    <p>Date: {{ certificate.issued_on|date:"d M Y" }}</p>
+  </div>
+
+</body>
+</html>

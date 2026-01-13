@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-6">
+
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md border border-yellow-600">
+
+    <h2 class="text-2xl font-semibold text-center mb-6">
+      Welcome Back to
+      <span class="bg-gradient-to-r from-purple-600 to-yellow-700 bg-clip-text text-transparent">
+        IES FestHive
+      </span>
+    </h2>
+
+    {% if error %}
+      <p class="text-red-500 text-center mb-4">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" class="space-y-4">
+      {% csrf_token %}
+
+      <div>
+        <label class="block font-medium">Username</label>
+        <input type="text" name="username" required
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-600">
+      </div>
+
+      <div>
+        <label class="block font-medium">Password</label>
+        <input type="password" name="password" required
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-600">
+      </div>
+
+      <button type="submit"
+        class="w-full bg-gradient-to-r from-purple-600 to-yellow-700 text-white py-2 rounded-lg hover:scale-105 transition">
+        Login
+      </button>
+    </form>
+
+    <p class="text-center mt-4">
+      Don’t have an account?
+      <a href="{% url 'signup' %}" class="text-yellow-600 font-semibold">Sign Up</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

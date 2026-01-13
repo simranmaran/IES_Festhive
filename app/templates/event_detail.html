@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="relative h-[70vh] bg-black">
+  {% if event.image %}
+    <img src="{{ event.image.url }}" class="absolute inset-0 w-full h-full object-cover">
+  {% endif %}
+  <div class="absolute inset-0 bg-black/70"></div>
+
+  <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+    <h1 class="text-4xl md:text-6xl font-extrabold text-yellow-400 mb-4">
+      {{ event.title }}
+    </h1>
+
+    <p class="max-w-3xl text-gray-200 text-lg mb-6">
+      {{ event.description }}
+    </p>
+
+    <div class="text-gray-300 text-sm md:text-base">
+      📅 {{ event.date }} &nbsp; | &nbsp;
+      ⏰ {{ event.time }} &nbsp; | &nbsp;
+      📍 {{ event.location }}
+    </div>
+
+    <a href="{% url 'event_register' event.id %}"
+       class="mt-8 px-10 py-4 bg-yellow-600 hover:bg-yellow-700
+              text-black font-bold rounded-full transition">
+      Register Now
+    </a>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="bg-black/90 text-white py-20">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+    <!-- LEFT CONTENT -->
+    <div class="lg:col-span-2">
+      <h2 class="text-3xl font-bold text-yellow-300 mb-6">
+        About the Event
+      </h2>
+
+      <p class="text-gray-300 leading-relaxed mb-10">
+        {{ event.description }}
+      </p>
+
+      <!-- GALLERY -->
+      <h3 class="text-2xl font-bold text-yellow-400 mb-6">
+        Event Gallery
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for img in gallery_images %}
+          <img src="{{ img }}"
+               class="rounded-xl shadow-lg hover:scale-105 transition duration-300 cursor-pointer">
+        {% empty %}
+          <p class="text-gray-400 col-span-full text-center">
+            No gallery images available
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-yellow-600 sticky top-10">
+
+      <h3 class="text-2xl font-bold text-yellow-400 mb-6">
+        Event Details
+      </h3>
+
+      <div class="space-y-4 text-gray-300 mb-8">
+        <p>📅 <span class="text-yellow-300">{{ event.date }}</span></p>
+        <p>⏰ <span class="text-yellow-300">{{ event.time }}</span></p>
+        <p>📍 <span class="text-yellow-300">{{ event.location }}</span></p>
+      </div>
+
+      <!-- COUNTDOWN -->
+      <h4 class="text-lg font-semibold text-yellow-300 mb-4">
+        Event Starts In
+      </h4>
+
+      <div class="grid grid-cols-4 gap-3 text-center">
+        <div class="bg-white/10 p-3 rounded">
+          <p class="text-2xl font-bold" id="days">00</p>
+          <span class="text-xs">Days</span>
+        </div>
+        <div class="bg-white/10 p-3 rounded">
+          <p class="text-2xl font-bold" id="hours">00</p>
+          <span class="text-xs">Hours</span>
+        </div>
+        <div class="bg-white/10 p-3 rounded">
+          <p class="text-2xl font-bold" id="minutes">00</p>
+          <span class="text-xs">Minutes</span>
+        </div>
+        <div class="bg-white/10 p-3 rounded">
+          <p class="text-2xl font-bold" id="seconds">00</p>
+          <span class="text-xs">Seconds</span>
+        </div>
+      </div>
+
+      <!-- REGISTER -->
+      <a href="{% url 'event_register' event.id %}"
+         class="block mt-8 text-center py-3 bg-yellow-600
+                hover:bg-yellow-700 text-black font-bold rounded-xl transition">
+        Register Now
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- COUNTDOWN SCRIPT -->
+<script>
+  const eventDate = new Date("{{ event.date }} {{ event.time }}").getTime();
+
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    if (diff <= 0) {
+      clearInterval(timer);
+      return;
+    }
+
+    document.getElementById("days").innerText =
+      Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").innerText =
+      Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+    document.getElementById("minutes").innerText =
+      Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("seconds").innerText =
+      Math.floor((diff / 1000) % 60);
+  }, 1000);
+</script>
+
+{% endblock %}

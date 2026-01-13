@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="min-h-screen bg-gray-100 pt-24 px-6">
+
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-10">
+      <h1 class="text-4xl font-bold text-gray-800">
+        Welcome, {{ request.user.username }} 👋
+      </h1>
+
+      <a href="{% url 'logout' %}"
+         class="bg-red-500 text-white px-5 py-2 rounded hover:bg-red-600">
+        Logout
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="text-gray-500">Registered Events</p>
+        <p class="text-3xl font-bold text-yellow-600">{{ registrations.count }}</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="text-gray-500">Feedback Given</p>
+        <p class="text-3xl font-bold text-green-600">{{ feedbacks.count }}</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="text-gray-500">Account Status</p>
+        <p class="text-xl font-semibold text-blue-600">Active</p>
+      </div>
+
+    </div>
+
+    <!-- Registered Events -->
+    <div class="bg-white rounded-xl shadow p-6 mb-10">
+      <h2 class="text-2xl font-bold mb-6 text-gray-800">
+        My Event Registrations
+      </h2>
+
+      {% if registrations %}
+        <div class="space-y-4">
+          {% for reg in registrations %}
+          <div class="flex justify-between items-center border p-4 rounded-lg">
+            <div>
+              <h4 class="font-semibold text-lg">{{ reg.event.title }}</h4>
+              <p class="text-sm text-gray-500">
+                📅 {{ reg.event.date }} | 📍 {{ reg.event.location }}
+              </p>
+            </div>
+
+            <a href="{% url 'event_detail' reg.event.id %}"
+               class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+              View Event
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-gray-500">You have not registered for any events yet.</p>
+      {% endif %}
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">
+        Feedback
+      </h2>
+
+      <a href="{% url 'feedback' %}"
+         class="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
+        Give Feedback
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

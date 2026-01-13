@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="p-10">
+  <h2 class="text-4xl font-bold mb-6 text-center text-yellow-600">
+    Event Registrations (Admin)
+  </h2>
+
+  {% if registrations %}
+  <div class="overflow-x-auto">
+    <table class="w-full bg-white shadow rounded">
+      <thead class="bg-black text-yellow-500">
+        <tr>
+          <th class="p-3">Event</th>
+          <th class="p-3">Student Name</th>
+          <th class="p-3">Email</th>
+          <th class="p-3">Phone</th>
+          <th class="p-3">College</th>
+          <th class="p-3">Branch</th>
+          <th class="p-3">Year</th>
+          <th class="p-3">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in registrations %}
+        <tr class="border-b text-center hover:bg-gray-100">
+          <td class="p-2 font-semibold">{{ r.event.title }}</td>
+          <td class="p-2">{{ r.full_name }}</td>
+          <td class="p-2">{{ r.email }}</td>
+          <td class="p-2">{{ r.phone }}</td>
+          <td class="p-2">{{ r.college }}</td>
+          <td class="p-2">{{ r.branch }}</td>
+          <td class="p-2">{{ r.year }}</td>
+          <td class="p-2 text-sm">{{ r.registered_at|date:"d M Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    <p class="text-center text-gray-600 mt-10">
+      No registrations found.
+    </p>
+  {% endif %}
+</div>
+
+{% endblock %}

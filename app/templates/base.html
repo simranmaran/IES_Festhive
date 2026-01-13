@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IES FestHive</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gray-100">
+
+  <!-- Navbar -->
+  <nav class="bg-black text-yellow-500 p-4 flex justify-between">
+    <h1 class="text-xl font-bold">IES FESTHIVE</h1>
+    <div class="space-x-4">
+      <a href="/" class="hover:text-white">Home</a>
+      <a href= "{% url 'events_list' %}" class="hover:text-white">Events</a>
+      {% comment %} <a href="/feedback/" class="hover:text-white">Feedback</a> {% endcomment %}
+      <a href="{% url 'feedback' %}" class="hover:text-yellow-400">Feedback</a>
+      <a href="/dashboard/" class="hover:text-white">Dashboard</a>
+      {% if user.is_authenticated %}
+        <a href="/logout/" class="hover:text-white">Logout</a>
+      {% else %}
+        <a href="/login/" class="hover:text-white">Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  <footer class="bg-black text-yellow-500 text-center p-4 mt-10">
+    © 2025 IES FestHive | Django Fullstack Project
+  </footer>
+
+</body>
+</html>

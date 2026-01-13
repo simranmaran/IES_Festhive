@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="min-h-screen bg-gray-100 p-8">
+
+  <h1 class="text-4xl font-bold mb-8 text-gray-800">
+    Admin Dashboard
+  </h1>
+
+  <!-- Stats Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h3 class="text-gray-500">Total Events</h3>
+      <p class="text-3xl font-bold text-indigo-600">{{ total_events }}</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h3 class="text-gray-500">Registrations</h3>
+      <p class="text-3xl font-bold text-green-600">{{ total_registrations }}</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h3 class="text-gray-500">Feedbacks</h3>
+      <p class="text-3xl font-bold text-yellow-600">{{ total_feedbacks }}</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h3 class="text-gray-500">Users</h3>
+      <p class="text-3xl font-bold text-red-600">{{ total_users }}</p>
+    </div>
+
+  </div>
+
+  <!-- Actions -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <a href="{% url 'admin_add_event' %}"
+       class="bg-indigo-600 text-white p-6 rounded-xl shadow hover:scale-105 transition">
+       ➕ Add New Event
+    </a>
+
+    <a href="{% url 'admin_events' %}"
+       class="bg-green-600 text-white p-6 rounded-xl shadow hover:scale-105 transition">
+       📅 Manage Events
+    </a>
+
+    <a href="{% url 'admin_registrations' %}"
+       class="bg-yellow-500 text-white p-6 rounded-xl shadow hover:scale-105 transition">
+       📝 View Registrations
+    </a>
+
+  </div>
+
+</div>
+
+
+<div class="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black px-6 py-10">
+
+  <h1 class="text-4xl font-bold text-yellow-400 mb-10 text-center">
+    Admin Dashboard
+  </h1>
+
+  <!-- STATS CARDS -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+    <div class="bg-white/10 backdrop-blur-xl p-6 rounded-xl border border-yellow-600 text-center">
+      <p class="text-gray-300">Total Users</p>
+      <h2 class="text-3xl font-bold text-yellow-400">{{ total_users }}</h2>
+    </div>
+
+    <div class="bg-white/10 backdrop-blur-xl p-6 rounded-xl border border-yellow-600 text-center">
+      <p class="text-gray-300">Total Events</p>
+      <h2 class="text-3xl font-bold text-yellow-400">{{ total_events }}</h2>
+    </div>
+
+    <div class="bg-white/10 backdrop-blur-xl p-6 rounded-xl border border-yellow-600 text-center">
+      <p class="text-gray-300">Registrations</p>
+      <h2 class="text-3xl font-bold text-yellow-400">{{ total_registrations }}</h2>
+    </div>
+
+    <div class="bg-white/10 backdrop-blur-xl p-6 rounded-xl border border-yellow-600 text-center">
+      <p class="text-gray-300">Feedbacks</p>
+      <h2 class="text-3xl font-bold text-yellow-400">{{ total_feedbacks }}</h2>
+    </div>
+
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="flex flex-wrap gap-4 justify-center">
+
+    <a href="{% url 'add_event' %}"
+       class="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-black font-bold rounded-xl">
+      ➕ Add Event
+    </a>
+
+    <a href="{% url 'admin_registrations' %}"
+       class="px-6 py-3 bg-white/10 hover:bg-white/20 text-yellow-400 border border-yellow-600 rounded-xl">
+      📋 View Registrations
+    </a>
+
+    <a href="{% url 'admin_analytics' %}"
+       class="px-6 py-3 bg-white/10 hover:bg-white/20 text-yellow-400 border border-yellow-600 rounded-xl">
+      📊 Analytics
+    </a>
+
+  </div>
+
+</div>
+
+{% endblock %}

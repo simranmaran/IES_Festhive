@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="p-10">
+  <h2 class="text-4xl font-bold mb-8">Admin Dashboard</h2>
+
+  <a href="/admin/add-event/"
+     class="inline-block mb-6 bg-green-600 text-white px-4 py-2 rounded">
+     ➕ Add Event
+  </a>
+
+  <table class="w-full bg-white shadow rounded">
+    <thead class="bg-black text-yellow-500">
+      <tr>
+        <th class="p-3">Title</th>
+        <th class="p-3">Date</th>
+        <th class="p-3">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in events %}
+      <tr class="border-b text-center">
+        <td class="p-3">{{ event.title }}</td>
+        <td class="p-3">{{ event.date }}</td>
+        <td class="p-3">{{ event.location }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<a href="/admin/registrations/"
+   class="inline-block mb-4 bg-blue-600 text-white px-4 py-2 rounded">
+   📋 View Registrations
+</a>
+<a href="/admin/analytics/"
+   class="inline-block mb-4 bg-purple-600 text-white px-4 py-2 rounded">
+   📊 View Analytics
+</a>
+
+{% endblock %}

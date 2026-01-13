@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="min-h-screen bg-black px-6 py-10">
+
+  <h2 class="text-3xl font-bold text-yellow-400 mb-6 text-center">
+    Event Registrations
+  </h2>
+
+  <div class="overflow-x-auto bg-white/10 backdrop-blur-xl rounded-xl border border-yellow-600">
+    <table class="min-w-full text-gray-300">
+
+      <thead class="bg-yellow-600 text-black">
+        <tr>
+          <th class="p-3">User</th>
+          <th class="p-3">Event</th>
+          <th class="p-3">Email</th>
+          <th class="p-3">Phone</th>
+          <th class="p-3">Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for r in registrations %}
+        <tr class="border-b border-gray-700 hover:bg-white/5">
+          <td class="p-3">{{ r.user.username }}</td>
+          <td class="p-3">{{ r.event.title }}</td>
+          <td class="p-3">{{ r.email }}</td>
+          <td class="p-3">{{ r.phone }}</td>
+          <td class="p-3">{{ r.event.date }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="p-6 text-center text-gray-400">
+            No registrations found
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+  </div>
+
+</div>
+
+{% endblock %}

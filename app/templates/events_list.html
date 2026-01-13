@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IES FestHive Events</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-b from-black via-gray-900 to-black text-white">
+
+<!-- ================= HERO ================= -->
+<section class="py-20 text-center">
+  <h1 class="text-5xl font-bold text-yellow-400">IES FestHive Events</h1>
+  <p class="text-gray-400 mt-3">Explore events by category & interest</p>
+</section>
+
+<!-- ================= FILTER BAR ================= -->
+<section class="max-w-6xl mx-auto px-4 mb-10">
+  <div class="flex flex-col md:flex-row gap-4">
+
+    <input id="searchInput"
+      type="text"
+      placeholder="Search events..."
+      class="flex-1 px-6 py-4 rounded-full text-black text-lg">
+
+    <select id="categorySelect"
+      class="px-6 py-4 rounded-full bg-black border-2 border-yellow-500">
+      <option value="all">All Categories</option>
+      <option value="technology">Technology</option>
+      <option value="cultural">Cultural</option>
+      <option value="sports">Sports</option>
+      <option value="business">Business</option>
+      <option value="academic">Academic</option>
+    </select>
+
+    <button onclick="filterEvents()"
+      class="px-10 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-full">
+      Search
+    </button>
+
+  </div>
+</section>
+
+<!-- ================= CATEGORY COUNTS ================= -->
+<section class="max-w-6xl mx-auto px-4 mb-12">
+  <div class="flex flex-wrap gap-4 justify-center text-sm">
+    <span class="px-5 py-2 rounded-full bg-white/10 border border-yellow-500">Technology: <b id="techCount">0</b></span>
+    <span class="px-5 py-2 rounded-full bg-white/10 border border-yellow-500">Cultural: <b id="cultCount">0</b></span>
+    <span class="px-5 py-2 rounded-full bg-white/10 border border-yellow-500">Sports: <b id="sportCount">0</b></span>
+    <span class="px-5 py-2 rounded-full bg-white/10 border border-yellow-500">Business: <b id="busCount">0</b></span>
+    <span class="px-5 py-2 rounded-full bg-white/10 border border-yellow-500">Academic: <b id="acadCount">0</b></span>
+  </div>
+</section>
+
+<!-- ================= EVENTS GRID ================= -->
+<section class="max-w-7xl mx-auto px-4">
+  <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+    <!-- EVENT CARD -->
+    <div class="event technology bg-white text-black rounded-2xl overflow-hidden shadow-xl">
+      <div class="h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center font-bold">
+        Event Image
+      </div>
+      <div class="p-6">
+        <h2 class="text-2xl font-bold">Tech Fest 2025</h2>
+        <p class="text-sm text-gray-600 mt-1">📅 15 March 2025 | 📍 Main Campus</p>
+        <p class="mt-3">Coding competitions, hackathons & AI workshops.</p>
+        <img url="https://res.cloudinary.com/dseku9heo/image/upload/v1767951667/radiance-in-rhythm-desktop_z9iiph.webp"
+     class="h-48 w-full object-cover">
+        <span class="inline-block mt-4 px-3 py-1 bg-blue-600 text-white rounded-full text-xs">Technology</span>
+      </div>
+    </div>
+
+    <div class="event cultural bg-white text-black rounded-2xl overflow-hidden shadow-xl">
+      <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center font-bold">
+        Event Image
+      </div>
+      <div class="p-6">
+        <h2 class="text-2xl font-bold">Cultural Night</h2>
+        <p class="text-sm text-gray-600 mt-1">📅 20 March 2025 | 📍 Auditorium</p>
+        <p class="mt-3">Dance, music & fashion show night.</p>
+        <span class="inline-block mt-4 px-3 py-1 bg-purple-600 text-white rounded-full text-xs">Cultural</span>
+      </div>
+    </div>
+
+    <div class="event sports bg-white text-black rounded-2xl overflow-hidden shadow-xl">
+      <div class="h-48 bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center font-bold">
+        Event Image
+      </div>
+      <div class="p-6">
+        <h2 class="text-2xl font-bold">Annual Sports Meet</h2>
+        <p class="text-sm text-gray-600 mt-1">📅 25 March 2025 | 📍 Sports Ground</p>
+        <p class="mt-3">Cricket, football, athletics & more.</p>
+        <span class="inline-block mt-4 px-3 py-1 bg-green-600 text-white rounded-full text-xs">Sports</span>
+      </div>
+    </div>
+
+    <div class="event business bg-white text-black rounded-2xl overflow-hidden shadow-xl">
+      <div class="h-48 bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-bold">
+        Event Image
+      </div>
+      <div class="p-6">
+        <h2 class="text-2xl font-bold">Startup Summit</h2>
+        <p class="text-sm text-gray-600 mt-1">📅 30 March 2025 | 📍 Seminar Hall</p>
+        <p class="mt-3">Entrepreneurship & startup ideas.</p>
+        <span class="inline-block mt-4 px-3 py-1 bg-amber-600 text-white rounded-full text-xs">Business</span>
+      </div>
+    </div>
+
+    <div class="event academic bg-white text-black rounded-2xl overflow-hidden shadow-xl">
+      <div class="h-48 bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center font-bold">
+        Event Image
+      </div>
+      <div class="p-6">
+        <h2 class="text-2xl font-bold">Science Exhibition</h2>
+        <p class="text-sm text-gray-600 mt-1">📅 5 April 2025 | 📍 Science Block</p>
+        <p class="mt-3">Innovative academic & research projects.</p>
+        <span class="inline-block mt-4 px-3 py-1 bg-rose-600 text-white rounded-full text-xs">Academic</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NO EVENTS -->
+  <div id="noEvents" class="hidden text-center py-16">
+    <h2 class="text-2xl font-bold text-yellow-400">No events found</h2>
+    <p class="text-gray-400 mt-2">Try changing search or category</p>
+  </div>
+</section>
+
+<!-- ================= JS ================= -->
+<script>
+function updateCounts() {
+  const types = ['technology','cultural','sports','business','academic'];
+  types.forEach(type => {
+    document.getElementById(type.slice(0,4)+'Count').innerText =
+      document.querySelectorAll('.event.'+type).length;
+  });
+}
+updateCounts();
+
+function filterEvents() {
+  const search = searchInput.value.toLowerCase();
+  const category = categorySelect.value;
+  let visible = 0;
+
+  document.querySelectorAll('.event').forEach(e => {
+    const text = e.innerText.toLowerCase();
+    const matchText = text.includes(search);
+    const matchCat = category === 'all' || e.classList.contains(category);
+    if (matchText && matchCat) {
+      e.style.display = "block";
+      visible++;
+    } else {
+      e.style.display = "none";
+    }
+  });
+
+  noEvents.classList.toggle("hidden", visible !== 0);
+}
+</script>
+
+</body>
+</html>

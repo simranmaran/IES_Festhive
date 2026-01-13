@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="p-10">
+  <h2 class="text-3xl font-bold mb-6 text-center">All Events</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for event in events %}
+    <div class="bg-white p-4 shadow rounded">
+      <img src="{{ event.image.url }}" class="h-40 w-full object-cover rounded">
+      <h3 class="text-xl mt-2">{{ event.title }}</h3>
+      <p>{{ event.location }}</p>
+      <p>{{ event.date }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

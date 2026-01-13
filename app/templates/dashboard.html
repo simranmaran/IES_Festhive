@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="p-10">
+  <h2 class="text-3xl font-bold mb-6">User Dashboard</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-6 rounded shadow text-center">
+      <h3 class="text-xl font-semibold">Events Joined</h3>
+      <p class="text-3xl font-bold text-yellow-600">5</p>
+    </div>
+
+    <div class="bg-white p-6 rounded shadow text-center">
+      <h3 class="text-xl font-semibold">Certificates</h3>
+      <p class="text-3xl font-bold text-green-600">3</p>
+    </div>
+
+    <div class="bg-white p-6 rounded shadow text-center">
+      <h3 class="text-xl font-semibold">Status</h3>
+      <p class="text-xl font-bold text-blue-600">Active</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
